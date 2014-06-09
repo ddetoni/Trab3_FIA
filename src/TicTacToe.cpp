@@ -15,7 +15,6 @@ public:
     void start();
     void next_move_player();
     void next_move_computer(bool player);
-    int is_over();
 
 };
 
@@ -39,7 +38,7 @@ void TicTacToe::next_move_player() {
 void TicTacToe::next_move_computer(bool player) {
     MinMax minmax;
 
-    BoardState move = minmax.teste(this->board, 9, player);
+    BoardState move = minmax.run(this->board, 9999999, player);
     this->board = move.getBoard();
 }
 

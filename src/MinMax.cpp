@@ -7,18 +7,19 @@ class MinMax {
 
 public:
 	MinMax();
-	BoardState teste(vector<int>board, int depth, bool playerOne);
-
+	BoardState run(vector<int>board, int max_depth, bool playerOne);
 };
 
 MinMax::MinMax(){
 	//contructor
-	}
+}
 
 
-BoardState MinMax::teste(vector<int> board, int depth, bool playerOne){
+BoardState MinMax::run(vector<int> board, int max_depth, bool playerOne){
 	BoardState b (board, 0);
-    if (depth == 0 || b.isOver()){
+	int depth = 0;
+	cout << depth << endl;
+    if (depth == max_depth || b.isOver()){
 		if (b.Evaluate()==1){
 			b.setValue(10+depth);
 			return b;
@@ -36,7 +37,7 @@ BoardState MinMax::teste(vector<int> board, int depth, bool playerOne){
 		vector<BoardState> list_child;
 		list_child = b.get_nexts(1);
 		for (int i = 0 ; i < list_child.size() ; i++){
-			b = this->teste(list_child[i].getBoard(), depth+1, false);
+			b = this->run(list_child[i].getBoard(), depth+1, false);
 			if (b.getValue() > best.getValue()){
                 best = list_child[i];
                 best.setValue(b.getValue());
@@ -48,7 +49,7 @@ BoardState MinMax::teste(vector<int> board, int depth, bool playerOne){
 		vector<BoardState> list_child;
 		list_child = b.get_nexts(2);
 		for (int i = 0 ; i < list_child.size() ; i++){
-			b = this->teste(list_child[i].getBoard(), depth+1, true);
+			b = this->run(list_child[i].getBoard(), depth+1, true);
 			if (b.getValue() < best.getValue()){
                 best = list_child[i];
                 best.setValue(b.getValue());

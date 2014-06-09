@@ -1,7 +1,5 @@
 #include <cstdlib>
 #include <iostream>
-
-
 #include <vector>
 
 using namespace std;
@@ -34,25 +32,23 @@ BoardState::BoardState(vector<int> b, int v) {
 
 int BoardState::getElement(int index){
 	return this->board[index];
-	}
+}
 
 int BoardState::getValue(){
 	return this->value;
-	}
+}
 
 void BoardState::setBoard(vector<int> board){
 		this->board = board;
-	}
+}
 
 void BoardState::setValue(int value){
 	this->value = value;
-	}
+}
 
 vector<int> BoardState::getBoard(){
-	//vector<int> aux = this.board;
-//return aux;
 	return board;
-	}
+}
 
 //argument should be a player id
 vector<BoardState> BoardState::get_nexts(int id) {
