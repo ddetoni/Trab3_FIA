@@ -8,10 +8,10 @@ using namespace std;
 
 class TicTacToe {
 private:
-    BoardState board;
+    vector<int> board;
 
 public:
-    TicTacToe(vector<int> array);
+    TicTacToe();
     void start();
     void next_move_player();
     void next_move_computer();
@@ -19,9 +19,9 @@ public:
 
 };
 
-TicTacToe::TicTacToe(vector<int> array) {
-	this->board (array, 0);
-};
+TicTacToe::TicTacToe() {
+    this->board = {0,0,0,0,0,0,0,0,0};
+}
 
 void TicTacToe::next_move_player() {
 
@@ -30,15 +30,17 @@ void TicTacToe::next_move_player() {
     cout << "Set your move: ";
     cin >> move;
 
-    this->board.setMove(move, 1);
+    BoardState aux (this->board, 0);
+    aux.setMove(move, 1);
+    this->board = aux.getBoard();
 
 }
 
 void TicTacToe::next_move_computer() {
     MinMax minmax;
 
-    move = minmax.teste(this->board.getBoard(), 0, false);
-    this->board.setBoard(move.getBoard());
+    BoardState move = minmax.teste(this->board, 0, false);
+    this->board = move.getBoard();
 }
 
 
@@ -50,11 +52,15 @@ void TicTacToe::start(){
     {
         if (who_plays == 1) {
             this->next_move_player();
-            this->board.printBoard();
+            BoardState aux (this->board, 0);
+            aux.printBoard();
+            cout << endl;
             who_plays = 2;
         } else {
             this->next_move_computer();
-            this->board.printBoard();
+            BoardState aux (this->board, 0);
+            aux.printBoard();
+            cout << endl;
             who_plays = 1;
         }
     }

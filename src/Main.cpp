@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	//b.Evaluate();
 
 
-	TicTacToe game(board);
+	TicTacToe game;
 	game.start();
 
 
