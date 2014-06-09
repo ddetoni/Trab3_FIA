@@ -38,7 +38,7 @@ void TicTacToe::next_move_player() {
 void TicTacToe::next_move_computer(bool player) {
     MinMax minmax;
 
-    BoardState move = minmax.run(this->board, 0, player);
+    BoardState move = minmax.run_depth(this->board, 0, 9, player);
     this->board = move.getBoard();
 }
 
