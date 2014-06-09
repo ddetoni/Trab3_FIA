@@ -7,7 +7,7 @@ class MinMax {
 
 public:
 	MinMax();
-	BoardState run(vector<int>board, int max_depth, bool playerOne);
+	BoardState run(vector<int>board,int depth, bool playerOne);
 };
 
 MinMax::MinMax(){
@@ -15,11 +15,10 @@ MinMax::MinMax(){
 }
 
 
-BoardState MinMax::run(vector<int> board, int max_depth, bool playerOne){
+BoardState MinMax::run(vector<int> board, int depth, bool playerOne){
 	BoardState b (board, 0);
-	int depth = 0;
-	cout << depth << endl;
-    if (depth == max_depth || b.isOver()){
+
+    if (b.isOver()){
 		if (b.Evaluate()==1){
 			b.setValue(10+depth);
 			return b;
