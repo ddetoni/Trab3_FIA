@@ -15,6 +15,9 @@ MinMax::MinMax(){
 }
 
 
+	
+	
+
 BoardState MinMax::run(vector<int> board, int max_depth, bool playerOne){
 	BoardState b (board, 0);
 	int depth = 0;
