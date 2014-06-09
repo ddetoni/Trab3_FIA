@@ -34,7 +34,7 @@ BoardState::BoardState(vector<int> b, int v) {
 int BoardState::getElement(int index){
 	return this->board[index];
 	}
-	
+
 int BoardState::getValue(){
 	return this->value;
 	}
@@ -46,7 +46,7 @@ void BoardState::setVector(vector<int> b){
 void BoardState::setValue(int value){
 	this->value = value;
 	}
-	
+
 vector<int> BoardState::getBoard(){
 	//vector<int> aux = this.board;
 //return aux;
@@ -59,7 +59,7 @@ vector<BoardState> BoardState::get_nexts(int id) {
     //Percorrer board, se vazio então copiar board e alterar a posição em questao.
     vector<BoardState> list_board; //list of next states
     vector<int> aux_board;
-    
+
     for (int i = 0 ; i < 9 ; i++){
 		aux_board = this->board;
 		if (this->board[i] == 0){
@@ -67,10 +67,10 @@ vector<BoardState> BoardState::get_nexts(int id) {
 			BoardState aux = BoardState(aux_board,0);
 			list_board.push_back(aux);
 		}
-	
+
 	}
 	return list_board;
-    
+
 }
 
 int BoardState::printBoard(){
@@ -88,53 +88,53 @@ int BoardState::printBoard(){
 			cout << " O ";
 		}
 	}
-	
+
 	return 0;
 	}
-	
+
 int BoardState::checkWinner(){
 	//int winner= 0;
 	if((this->board[0] == this->board[1]) && (this->board[1] == this->board[2])){
 		if(this->board[0] == 1)return 1;
 		if(this->board[0] == 2)return 2;
 		}
-			
+
 	if((this->board[3] == this->board[4]) && (this->board[4] == this->board[5])){
 		if(this->board[3] == 1)return 1;
 		if(this->board[3] == 2)return 2;
 	}
-	
+
 	if((this->board[6] == this->board[7]) && (this->board[7] == this->board[8])){
 		if(this->board[6] == 1)return 1;
-		if(this->board[6] == 2)return 2;	
+		if(this->board[6] == 2)return 2;
 	}
-	
+
 	if((this->board[0] == this->board[3]) && (this->board[3] == this->board[6])){
 		if(this->board[0] == 1)return 1;
-		if(this->board[0] == 2)return 2;	
+		if(this->board[0] == 2)return 2;
 	}
-	
+
 	if((this->board[1] == this->board[4]) && (this->board[4] == this->board[7])){
 		if(this->board[1] == 1)return 1;
 		if(this->board[1] == 2)return 2;
 	}
-			
+
 	if((this->board[2] == this->board[5]) && (this->board[5] == this->board[8])){
 		if(this->board[2] == 1)return 1;
 		if(this->board[2] == 2)return 2;
 	}
-			
+
 	if((this->board[0] == this->board[4]) && (this->board[4] == this->board[8])){
 		if(this->board[0] == 1)return 1;
 		if(this->board[0] == 2)return 2;
 	}
-				
+
 	if((this->board[2] == this->board[4]) && (this->board[4] == this->board[6])){
 		if(this->board[2] == 1)return 1;
 		if(this->board[2] == 2)return 2;
 	}
 	return 0;
-	
+
 }
 
 bool BoardState::isOver(){
@@ -148,8 +148,8 @@ bool BoardState::isOver(){
 		}
 	}
 	return true;
-	
-	
+
+
 }
 
 int BoardState::Evaluate(){ //retorna o vencedor, ou 0 para empate
@@ -161,5 +161,5 @@ int BoardState::Evaluate(){ //retorna o vencedor, ou 0 para empate
 				}else{
 					return 0;
 					}
-		
+
 	}

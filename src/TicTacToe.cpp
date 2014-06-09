@@ -3,7 +3,6 @@
 #include <vector>
 #include <math.h>
 
-//#include "BoardState.cpp"
 #include "MinMax.cpp"
 using namespace std;
 
@@ -34,11 +33,6 @@ BoardState TicTacToe::next_move_computer(int move_position) {
     return BoardState(0);
 };
 */
-int TicTacToe::is_over() {
-
-    return 0;
-}
-
 
 
 void TicTacToe::start(){
@@ -46,37 +40,35 @@ void TicTacToe::start(){
 	MinMax minmax;
 	vector<BoardState> next;
 	//vector<int>board = {1,2,2,2,1,1,0,0,0};
-	vector<int>board = {2,1,2,1,1,2,0,0,0};
+	vector<int>board = {0,0,0,0,1,0,0,0,0};
 	vector<int>aux = {0,0,0,0,0,0,0,0,0};
 	BoardState b (board, 0);
-	
 
-	
-	
+
+
+
 	BoardState move(aux,0);
 	cout << "INITIAL STATE" <<endl <<endl;
-	
-	//b.printBoard();
-	move = minmax.teste(b.getBoard(), 1, true);
-	
+
+	b.printBoard();
+	move = minmax.teste(b.getBoard(), 0, false);
+
 //	next = b.get_nexts(1);
-	
+
 	for (int i = 0 ; i < next.size() ; i++){
 	//	next[i].printBoard();
 		}
-	
+
 	//next[1].printBoard();
 	//cout << endl << next[1].isOver();
-	
+
 	cout << endl << endl <<endl<<"move: ";
 	cout <<move.getValue();
 	move.printBoard();
-	
-	
 
-	
-	
-	
+
+
+
+
+
 }
-
-
