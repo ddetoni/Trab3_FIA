@@ -18,7 +18,6 @@ MinMax::MinMax(){
 
 BoardState MinMax::teste(vector<int> board, int depth, bool playerOne){
 	BoardState b (board, 0);
-
     if (b.isOver()){
 		if (b.Evaluate()==1){
 			b.setValue(10+depth);

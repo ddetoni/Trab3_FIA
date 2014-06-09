@@ -19,11 +19,12 @@ public:
 	int checkWinner(); //0 = no winner ; 1 = player 1 won ; 2 = player 2 won
 	vector<int> getBoard();
 	void setValue(int value);
-	void setVector(vector<int> b);
+	void setBoard(vector<int> board);
 	int getValue();
 	int getElement(int index);
 	bool isOver();
 	int Evaluate();
+    void setMove(int move, int id_player);
 };
 
 BoardState::BoardState(vector<int> b, int v) {
@@ -39,8 +40,8 @@ int BoardState::getValue(){
 	return this->value;
 	}
 
-void BoardState::setVector(vector<int> b){
-		this->board = b;
+void BoardState::setBoard(vector<int> board){
+		this->board = board;
 	}
 
 void BoardState::setValue(int value){
@@ -163,3 +164,7 @@ int BoardState::Evaluate(){ //retorna o vencedor, ou 0 para empate
 					}
 
 	}
+
+void BoardState::setMove(int move, int id_player) {
+    this->board[move] = id_player;
+}
