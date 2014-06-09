@@ -39,7 +39,7 @@ void TicTacToe::next_move_player() {
 void TicTacToe::next_move_computer(bool player) {
     MinMax minmax;
 
-    BoardState move = minmax.teste(this->board, 0, player);
+    BoardState move = minmax.teste(this->board, 9, player);
     this->board = move.getBoard();
 }
 
@@ -51,7 +51,7 @@ void TicTacToe::start(){
     for(int i=1; i < 10; i++)
     {
         if (who_plays == 1) {
-            this->next_move_computer(true);
+            this->next_move_player();
             BoardState aux (this->board, 0);
             aux.printBoard();
             cout << endl;
