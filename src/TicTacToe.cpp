@@ -14,7 +14,7 @@ public:
     TicTacToe();
     void start();
     void next_move_player();
-    void next_move_computer();
+    void next_move_computer(bool player);
     int is_over();
 
 };
@@ -36,10 +36,10 @@ void TicTacToe::next_move_player() {
 
 }
 
-void TicTacToe::next_move_computer() {
+void TicTacToe::next_move_computer(bool player) {
     MinMax minmax;
 
-    BoardState move = minmax.teste(this->board, 0, false);
+    BoardState move = minmax.teste(this->board, 0, player);
     this->board = move.getBoard();
 }
 
@@ -51,13 +51,13 @@ void TicTacToe::start(){
     for(int i=1; i < 10; i++)
     {
         if (who_plays == 1) {
-            this->next_move_player();
+            this->next_move_computer(true);
             BoardState aux (this->board, 0);
             aux.printBoard();
             cout << endl;
             who_plays = 2;
         } else {
-            this->next_move_computer();
+            this->next_move_computer(false);
             BoardState aux (this->board, 0);
             aux.printBoard();
             cout << endl;
